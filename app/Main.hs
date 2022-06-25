@@ -9,37 +9,38 @@ import Data.Text
 
 databaseName = "project.db" :: String
 --types
-data Student = Student { userId :: Int , firstName :: String, lastName  :: String } -- deriving Show
-data Course = Course { courseId :: Int , name :: String , code :: String  , maxStudent :: Int  }
+data Student         = Student { userId :: Int , firstName :: String, lastName  :: String } -- deriving Show
+data Course          = Course { courseId :: Int , name :: String , code :: String  , maxStudent :: Int  }
 data AllRegistration = AllRegistration    {      uId :: Int   , fName :: String   , lName   , cName :: String   }
  --types
 
 --instances
-instance Show Student where show user = mconcat [ show $ userId user  , "\t"  , firstName user , "\t" , lastName user ]
+instance Show Student where show user   = mconcat [ show $ userId user  , "\t"  , firstName user , "\t" , lastName user ]
 instance Show Course where  show course = mconcat [ show $ courseId course , "\t" , name course, "\t\t", code course , "\t\t"  , (show $ maxStudent course ) , "\n"]
 instance Show AllRegistration where show reg = mconcat [ show $ uId reg  , "\t" , fName reg , "\t" , lName reg , "\t"  , cName reg   , "\n"]
 
 --for converting a row of results returned by a SQL query into a more useful Haskell representation.
-instance FromRow Student where fromRow = Student <$> field <*> field  <*> field
-instance FromRow Course where  fromRow = Course <$> field <*> field <*> field  <*> field
+instance FromRow Student where fromRow         = Student <$> field <*> field  <*> field
+instance FromRow Course where  fromRow         = Course <$> field <*> field <*> field  <*> field
 instance FromRow AllRegistration where fromRow = AllRegistration <$> field <*> field <*> field <*> field
 --instances
 
 -- main and menu options
 main :: IO ()
 main = do
-   print "Enter a number from the menu \n"
+   putStrLn "\nEnter a number from the menu \n"
    printMenu
    selection <- getLine
+   putStrLn ""
    menuSelection selection
 
 printMenu :: IO ()
 printMenu = do
-   putStrLn " MENU SELECTION "
+   putStrLn "\n ESC[30mMENU SELECTION "
    putStrLn "   For Student :       Enter \ESC[92m1 \ESC[30mfor New Student,  Enter \ESC[92m2 \ESC[30mfor display Students"
    putStrLn "   For Courses :       Enter \ESC[92m3 \ESC[30mfor New Course ,  Enter \ESC[92m4 \ESC[30mfor display Courses"
    putStrLn "   For Registration :  Enter \ESC[92m5 \ESC[30mfor to Register. ,Enter \ESC[92m6 \ESC[30mfor display , and \ESC[92m7 \ESC[30mto delete "
-   putStrLn "   To exit          :  Enter \ESC[92m0 "
+   putStrLn "   To exit          :  Enter \ESC[92m0 \ESC[30mto Exit\n\n"
 
 menuSelection :: String -> IO ()
 menuSelection selection
@@ -173,5 +174,5 @@ deleteRegistration :: Int -> Int -> IO ()
 deleteRegistration studentId courseId =  dbConnection $
                      \conn -> do
                        execute conn
-                         "DELETE FROM Registration WHERE student_id = ? and course_id = ?;" (courseId , courseId)
+                         "DELETE FROM Registration WHERE student_id = ? and course_id = ?;" (studentId , courseId)
 -- end of registration

@@ -23,9 +23,12 @@ CREATE TABLE Registration (
        course_id INTEGER
        );
 
-INSERT INTO Student (firstName, LastName) VALUES ('Habib', 'Mohamed');
-INSERT INTO Student (firstName, LastName) VALUES ('Rosnel' , 'Echevarria');
-INSERT INTO Student (firstName, LastName) VALUES ('Irfan', 'Ali');
+INSERT INTO Student (firstName, LastName) VALUES ('Habib', 'Habbib');
+INSERT INTO Student (firstName, LastName) VALUES ('Rosnel' , 'Rosnel');
+INSERT INTO Student (firstName, LastName) VALUES ('Irfan', 'Irfan');
+INSERT INTO Student (firstName, LastName) VALUES ('Donie', 'Donie');
+INSERT INTO Student (firstName, LastName) VALUES ('Phi', 'Phi');
+INSERT INTO Student (firstName, LastName) VALUES ('Joseph', 'Joseph');
 
 INSERT INTO Course (name,code, maxStudent) VALUES ('HASKELL','HASK101' , 25);
 INSERT INTO Course (name,code, maxStudent) VALUES ('PLUTUS' , 'PLUT201', 20);
@@ -36,4 +39,6 @@ INSERT INTO Registration (student_id, course_id) VALUES (1,1);
 INSERT INTO Registration (student_id, course_id) VALUES (2,1);
 INSERT INTO Registration (student_id, course_id) VALUES (3,1);
 INSERT INTO Registration (student_id, course_id) VALUES (4,1);
+INSERT INTO Registration (student_id, course_id) VALUES (4,2);
+INSERT INTO Registration (student_id, course_id) VALUES (4,3);
 
