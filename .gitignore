@@ -1,0 +1,6 @@
+logs/ 
+dist-newstyle/
+changelog.md
+history.out
+project.db
+.DS_Store
