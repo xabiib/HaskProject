@@ -1,4 +1,4 @@
-# simple Course Registration - Haskell Project.
+# Simple Course Registration - Haskell Project.
 
 The simple Course Registration system is a simple yet complete management project. Haskell programming language and Visual Studio code are the core elements for its completion. 
 Also, this project uses the SQLite database as backend support for storing student and course information. 
